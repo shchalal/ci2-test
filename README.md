@@ -1,2 +1,4 @@
-![CI](https://github.com/shchalal/ajs-homeworks/ci-template/actions/workflows/ci.yml/badge.svg?branch=main)
+
+
+[![CI](https://github.com/shchalal/ci2-test/actions/workflows/ci.yml/badge.svg)](https://github.com/shchalal/ci2-test/actions/workflows/ci.yml)
 

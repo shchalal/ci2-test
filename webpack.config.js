@@ -1,46 +1,25 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const path = require('node:path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-
-module.exports = {
+export default {
+  entry: './src/index.js',
   output: {
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
+  devServer: {
+    static: path.resolve(__dirname, 'dist'),
+    port: 8080,
+    hot: true,
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-          },
-        ],
-      },
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-      }
+      { test: /\.js$/, exclude: /node_modules/, use: { loader: 'babel-loader' } },
+      { test: /\.css$/i, use: ['style-loader', 'css-loader'] }, 
     ],
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html',
-    })
-  ],
 };
+
